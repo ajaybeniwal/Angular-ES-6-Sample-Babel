@@ -1,0 +1,69 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<style type="text/css">
+	.media-body p{
+    margin-bottom: 0px;
+}
+
+
+body{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.media-body h4{
+    margin-bottom: 0px;
+}
+
+.fixedwidth{
+    height: 100px;
+    padding-top: 10px;
+    padding-left: 10px;
+   
+}
+
+.border{
+    border: 2px solid black;
+}
+	</style>
+</head>
+<body ng-controller="MainController as app">
+  <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label hidden-xs">Search</label>
+                        <div class="col-sm-10">
+                            
+                            <input type="text" class="form-control"  placeholder="filter by app name" ng-model='app.appNameFilter["im:name"].label'>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-repeat="data in app.priceList|filter:app.appNameFilter" class="col-xs-12 col-md-6 border">
+                <div class="fixedwidth">
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img ng-src='{{data["im:image"][0].label}}'>
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{data["im:name"].label}}</h4>
+                            <p>{{data.category.attributes.label}}</p>
+                            <p>{{data["im:price"].label}}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="scripts/vendor.bundle.js"></script>
+<script type="text/javascript" src="scripts/bundle.js"></script>
+</body>
+</html>
